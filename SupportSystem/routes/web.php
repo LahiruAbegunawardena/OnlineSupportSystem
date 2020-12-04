@@ -20,6 +20,8 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 Route::get('/add-support-ticket', 'TicketController@openTicket')->name('addTicket');
 Route::post('/store-support-ticket', 'TicketController@storeTicket')->name('storeTicket');
+Route::get('/find-support-ticket', 'TicketController@findTicketDet')->name('findTicketDet');
+Route::post('/get-support-ticket', 'TicketController@getTicketDet')->name('getTicketDet');
 
 Route::post('/support-agent-login', 'SupportAgentController@supportAgentLogin')->name('suppAgentLogin');
 

@@ -72,6 +72,8 @@
                     @else
                         <a href="{{ route('addTicket') }}">Add Ticket</a>
 
+                        <a href="{{ route('findTicketDet') }}">Ticket Details</a>
+
                         <a href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))

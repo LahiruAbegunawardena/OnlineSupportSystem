@@ -43,4 +43,24 @@ class TicketController extends Controller {
             }
         }
     }
+
+    public function findTicketDet() {
+        return view('find-ticket');
+    }
+
+    public function getTicketDet(Request $request) {
+        $ticket = $this->supportTicketModel->where(["ticket_ref_no" => $request["ref_no"]])->first();
+        $comments = [];
+        foreach ($ticket->commentsOnTicket as $key => $comment) {
+            // pivot gives details on comment
+            $comments[] = array(
+                "agent" => $comment,
+                "comment_details" => $comment->pivot
+            );
+        }
+        return array(
+            "ticket" => $ticket,
+            "comments" => $comments
+        );
+    }
 }

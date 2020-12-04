@@ -21,7 +21,10 @@ class AgentTicketController extends Controller
     public function viewCommentTicket(int $ticketId) {
         $data["ticket"] = $this->supportTicketModel->find($ticketId);
         $data["agentComment"] = $this->ticketsByAgentModel->where(["agent_id" => Auth::user()->id, "ticket_id" => $ticketId])->get();
-        return view('SupportAgent.tickets.comment', $data);
+        if(isset($data["ticket"]) && isset($data["agentComment"])){
+            return view('SupportAgent.tickets.comment', $data);
+        }
+        return redirect()->route('suppAgentIndex')->with('warning', 'Ticket not found..');
     }
 
     public function commentTicket(int $ticketId, Request $request) {

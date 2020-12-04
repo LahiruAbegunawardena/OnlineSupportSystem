@@ -42,7 +42,9 @@ $(document).ready(function() {
                 
             },
             error: function(result) {
-                console.log(result);
+                $("#ticketDetails").show();
+                document.getElementById("ticketDetails").innerHTML = 
+                '<div class="card-body" id="ticketDetailsbody">No Ticket Found</div>';
             }
         });
     });
